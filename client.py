@@ -1,4 +1,3 @@
-"""Private training, legacy probability perturbation, and local distillation."""
 
 import math
 
@@ -10,7 +9,7 @@ from data import DistillationDataset, make_loader
 
 
 def legacy_noise_std(config):
-    """Reproduce the nominal noise calibration in the old experiment code."""
+    
     nominal_sensitivity = (
         config.lipschitz_constant * config.delta_theta / (2 * config.temperature)
     )
@@ -35,7 +34,7 @@ def prediction_entropy(probabilities):
 
 
 def current_learning_rate(config, round_number):
-    """Use the initial rate in round one and decay after each completed round."""
+    
     exponent = round_number - 1
     return max(config.initial_lr * config.lr_decay_rate ** exponent, config.min_lr)
 
@@ -124,7 +123,7 @@ class FederatedClient:
 
     @torch.no_grad()
     def predict_public(self, public_loader):
-        """Compute clean entropy, then perturb probabilities without matrix clipping."""
+        
         self.model.eval()
         predictions, entropies = [], []
         for images, _ in public_loader:

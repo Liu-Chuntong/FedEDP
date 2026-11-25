@@ -1,4 +1,4 @@
-"""Entropy-weighted aggregation and tensor payload accounting."""
+
 
 import math
 

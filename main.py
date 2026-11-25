@@ -1,4 +1,3 @@
-"""FedEDP experiment entry point and centralized experiment hyperparameters."""
 
 import argparse
 import copy
